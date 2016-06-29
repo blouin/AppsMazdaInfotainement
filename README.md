@@ -9,6 +9,7 @@ Feel free to re-use & modify these.
 
 ---
 app.clock: A full size clock
+
 Stuff you need to do / might not work:
 - Since I can't get the exact date, I got it from the GPS timestamp. Not sure the app works if your car has no GPS.
 - To convert the GPS date to a local date, the easiest way I found was to "hard code" the hours offset because javascript version did not work. I'm -4 hours off (thus 240 minutes) off from UTC. If you use the app, change the value on line 66 of app.js file to your specific value. We also switch hours (winter/summer; +/- 1h), so I'll just change the value then. Not the best way, but easy fix to do.
