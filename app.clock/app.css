@@ -9,7 +9,7 @@
     height: 300px; /* height of clock */
     border-radius: 300px; /* clock round corner radius */
     background: black;
-    box-shadow: inset 0 0 25px gray;
+    box-shadow: inset 0 0 25px #dddddd;
     border: 0 solid gray; /* thickness of outer border */
 	margin: 0 auto; 
 
@@ -20,7 +20,7 @@
     position: absolute;
     width: 8px; /* width of 12-6 and 3-9 markers */
     height: 100%;
-    background: gray;
+    background: #dddddd;
     z-index: 0;
     left: 50%;
     margin-left: -4px; /* set this value of 1/2 marker width */
@@ -35,7 +35,7 @@
     }
 
 [app="app.clock"] .outer_face .marker {
-    background: #333333;
+    background: #aaaaaa;
     width: 6px; /* width of all other markers */
     margin-left: -3px /* set this value of 1/2 marker width */
     }
@@ -85,22 +85,22 @@
 	position: relative;
 	top: -60px;
 	text-align: center;
-	color: #aaaaaa;
+	color: #dddddd;
 	z-index: 1001;
     font: normal 0.8em Arial;
-	opacity: 0.35;
-	filter: alpha(opacity=35);
+	opacity: 0.85;
+	filter: alpha(opacity=85);
     }	
 
 [app="app.clock"] .tempdigital {
 	position: relative;
 	top: -60px;
 	text-align: center;
-	color: #aaaaaa;
+	color: #dddddd;
 	z-index: 1001;
     font: normal 0.8em Arial;
-	opacity: 0.35;
-	filter: alpha(opacity=35);
+	opacity: 0.85;
+	filter: alpha(opacity=85);
     }		
 
 [app="app.clock"] .inner_face::before {
@@ -146,8 +146,8 @@
     -webkit-box-shadow: 0 0 3px gray;
     box-shadow: 0 0 3px gray;
 	background: red;
-	opacity: 0.35;
-	filter: alpha(opacity=35);
+	opacity: 0.65;
+	filter: alpha(opacity=65);
     }
 
 [app="app.clock"] .hand.minute {
@@ -156,8 +156,8 @@
     width: 5px; /* width of min hand */
     margin-left: -2.5px; /* set this value to 1/2 width */
 	background: red;
-	opacity: 0.35;
-	filter: alpha(opacity=35);
+	opacity: 0.65;
+	filter: alpha(opacity=65);
 	z-index: 2002;
     }
 
