@@ -43,7 +43,7 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 	created: function() {
 		var div = document.createElement("div");
 		div.setAttribute("id", "liveclock");
-		div.setAttribute("class", "outer_face")
+		div.setAttribute("class", "outer_face");
 		div.innerHTML = "";
 		div.innerHTML += "<div class='marker oneseven'></div>";
 		div.innerHTML += "<div class='marker twoeight'></div>";
@@ -56,6 +56,15 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 		div.innerHTML += "<div class='hand second'></div>";
 		div.innerHTML += "</div>";
 		this.canvas.get(0).appendChild(div);
+		
+		var divTop = document.createElement("div");
+		divTop.setAttribute("id", "lighting");
+		divTop.setAttribute("class", "lighting");
+		this.canvas.get(0).appendChild(divTop);
+		
+		// Defaults
+		this.screenOff = false;
+		this.screenOpacity = 0;
 	},
 
 	/**
@@ -66,7 +75,18 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 					var hands = $('#liveclock div.hand');
 					
 					var utcSeconds = CustomApplicationDataHandler.get(VehicleData.gps.timestamp).value;
-					utcSeconds = utcSeconds - (240 * 60 * 1000);
+					if (utcSeconds == 0) {
+						hands.filter('.hour').css({transform: 'rotate(0deg)' })
+						hands.filter('.minute').css({transform: 'rotate(0deg)' })
+						hands.filter('.second').css({transform: 'rotate(0deg)' })					
+						$('.timedigital').text("...");
+						return;
+					}
+					
+					// SUMMER: 
+					utcSeconds = utcSeconds - (4 * 3600);
+					// WINTER: 
+					//utcSeconds = utcSeconds - (5 * 3600);
 					
 					var curdate = new Date(0);
 					curdate.setUTCSeconds(utcSeconds);
@@ -78,7 +98,7 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 					hands.filter('.minute').css({transform: 'rotate(' + minute_as_degree + 'deg)' })
 					hands.filter('.second').css({transform: 'rotate(' + second_as_degree + 'deg)' })
 					
-					var timeText = (curdate.getHours() % 12) + ":" + (curdate.getMinutes() < 10 ? '0' + curdate.getMinutes() : curdate.getMinutes());
+					var timeText = (curdate.getHours() ) + ":" + (curdate.getMinutes() < 10 ? '0' + curdate.getMinutes() : curdate.getMinutes());
 					$('.timedigital').text(timeText);
 				}, 100 );
 	},
@@ -95,7 +115,29 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 	 * (event) When a controller key is pressed
 	 */
 	onControllerEvent: function(eventId) {
-
+		switch(eventId) {
+			case "selectStart":
+				if (this.screenOff){
+					$('#lighting').css({opacity: this.screenOpacity });
+				}
+				else {
+					$('#lighting').css({opacity: 1 });
+				}
+				this.screenOff = !this.screenOff
+                break;
+			case "cw":
+				this.screenOpacity = this.screenOpacity - 0.1;
+				if (this.screenOpacity < 0)
+					this.screenOpacity = 0;
+				$('#lighting').css({opacity: this.screenOpacity });
+				break;
+			case "ccw":
+				this.screenOpacity = this.screenOpacity + 0.1;
+				if (this.screenOpacity > 0.5)
+					this.screenOpacity = 0.5;
+				$('#lighting').css({opacity: this.screenOpacity });
+				break;
+		}		
 	},
 
 
