@@ -71,6 +71,7 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 	 * (focused) When application is put into focus
 	 */
 	focused: function() {
+		var that = this;
 		this.timerClock = setInterval( function() {
 					var hands = $('#liveclock div.hand');
 					
@@ -83,12 +84,8 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 						return;
 					}
 					
-					// SUMMER: 
-					utcSeconds = utcSeconds - (4 * 3600);
-					// WINTER: 
-					//utcSeconds = utcSeconds - (5 * 3600);
-					
 					var curdate = new Date(0);
+					utcSeconds = that.calculateOffset(utcSeconds);
 					curdate.setUTCSeconds(utcSeconds);
 
 					var hour_as_degree = ( curdate.getHours() + curdate.getMinutes()/60 ) / 12 * 360
@@ -124,7 +121,7 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 					$('#lighting').css({opacity: 1 });
 				}
 				this.screenOff = !this.screenOff
-                break;
+				break;
 			case "cw":
 				this.screenOpacity = this.screenOpacity - 0.1;
 				if (this.screenOpacity < 0)
@@ -139,6 +136,16 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 				break;
 		}		
 	},
+	
+	calculateOffset: function(utcSeconds) {
+		
+		// SUMMER: 
+		utcSeconds = utcSeconds - (4 * 3600);
+		// WINTER: 
+		//utcSeconds = utcSeconds - (5 * 3600);
+		
+		return utcSeconds;
+	}
 
 
 })); /** EOF **/
