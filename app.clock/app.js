@@ -1,7 +1,7 @@
 /**
  * [Custom clock for car]
  *
- * @version: 1.0.0
+ * @version: 1.1.0
  * @author: JF Blouin
  * @description Displays a clock
  *
