@@ -8,12 +8,13 @@ http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/
 Feel free to re-use & modify these.
 
 ---
-app.clock: A full size clock for the Infotainement. 
+## app.clock: A full size clock for the Infotainement. 
 
-New:
-- You can now use the controller to adjust brightness. I personnally prefer to "dim" the light when I'm driving at night, so you can turn the wheel CW or CCW to adjust brightness. You can also push the controller to toggle screen on or off.
+### Adjusting brightness:
+- You can use the controller to adjust brightness. I personnally prefer to "dim" the light when I'm driving at night, so you can turn the wheel CW or CCW to adjust brightness. You can also push the controller to toggle screen on or off.
 
-Stuff you need to do / might not work:
-- Since I can't get the exact date, I got it from the GPS timestamp. It may take a few seconds before the time adjusts.
-- To convert the GPS date to a local date, the easiest way I found was to "hard code" the hours offset because javascript version did not work. I'm -4 hours off (thus 240 minutes) off from UTC. If you use the app, change the value on line 86-89 of app.js file to your specific value. We also switch hours (winter/summer; +/- 1h), so I'll just change the value then. Not the best way, but easy fix to do.
-- I'm french speaking, so the app name is also in french. You can change to what you want on line 29 of app.js file.
+### Translating application name
+- I'm french speaking, so the app name is also in french. You can change to what you want ~ line 29 of `app.js` file.
+
+### Adjusting time
+- Since I can't get the exact date, I got it from the GPS timestamp. It may take a few seconds before the time adjusts. To convert the GPS date to a local date, the easiest way I found was to "hard code" the hours offset because javascript version did not work. I'm -4 hours off (thus 240 minutes) off from UTC. If you use the app, change the value in `calculateOffset` function of `app.js` file to your specific value. We also switch hours (winter/summer; +/- 1h), so I'll just change the value then. Not the best way, but easy fix to do.
