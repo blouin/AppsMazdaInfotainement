@@ -1,0 +1,100 @@
+[app="app.compass"] {
+	background:url(images/background.jpg) no-repeat center center;
+}
+
+[app="app.compass"] .lighting {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background: black;
+	z-index: 5000;
+	opacity: 0;
+}
+
+/*******/
+	
+[app="app.compass"] .top {
+	position: relative;
+	height: 65%;
+	width: 100%;
+}
+
+[app="app.compass"] .top .marker {
+	position: absolute;
+	bottom: 0px;
+	width: 2px;
+	height: 105px;
+	background-color: red;
+	background-image: -webkit-linear-gradient(top, #666666, #ff0000);
+	background-image: -moz-linear-gradient(top, #666666, #ff0000);
+	background-image: -ms-linear-gradient(top, #666666, #ff0000);
+	background-image: linear-gradient(top, #666666, #ff0000);
+}
+[app="app.compass"] .top .marker.left {
+	left: 20%;
+}
+[app="app.compass"] .top .marker.center {
+	left: 50%;
+	height: 175px;
+}
+[app="app.compass"] .top .marker.right {
+	left: 80%;
+}
+
+[app="app.compass"] .top .orientation {
+	position: absolute;
+	color: #999999;
+	width: 12%;
+	text-align: center;
+}
+[app="app.compass"] .top .orientation.main {
+	font-size: 100pt;
+	bottom: 15px;
+	color: #cccccc;
+}
+[app="app.compass"] .top .orientation.alt {
+	font-size: 20pt;
+	bottom: 45px;
+}
+[app="app.compass"] .top .orientation.small {
+	font-size: 50pt;
+	bottom: 30px;
+}
+
+/*******/
+
+[app="app.compass"] .seperator {
+	width: 100%;
+	height: 25px;
+	background-image: -webkit-linear-gradient(top, #444444, #000000);
+	background-image: -moz-linear-gradient(top, #444444, #000000);
+	background-image: -ms-linear-gradient(top, #444444, #000000);
+	background-image: linear-gradient(top, #444444, #000000);
+	background-color: #000000;
+	box-shadow: insert 0px 0px 35px 0px #ff0000;
+}
+
+/*******/
+
+[app="app.compass"] .bottom {
+	position: relative;
+	width: 100%;
+}
+
+[app="app.compass"] .bottom .info {
+	position: absolute;
+	left: 35px;
+	bottom: -95px;
+	font-size: small;
+	color: #cccccc;
+}
+
+[app="app.compass"] .bottom .time {
+	position: absolute;
+	right: 40px;
+	bottom: -95px;
+	font-size: 25pt;
+	color: #cccccc;
+}
